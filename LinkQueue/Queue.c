@@ -90,15 +90,16 @@ DataType GetTailElement_Queue(QueueType queue_manager)
 	}
 	pQueueManager temp = (pQueueManager)queue_manager;
 
-	while (temp->tail->next != NULL)
+	pNode real_tail = temp->tail;
+	while (real_tail->next != NULL)
 	{
-		temp->tail = temp->tail->next;
+		real_tail = real_tail->next;
 	}
 
-	return (DataType)temp->tail;
+	return (DataType)real_tail;
 
 }
-int TraversalPrint_queue(QueueType queue_manager, void (*PrintFunc)(void* data))
+int TraversalPrint_queue(QueueType queue_manager, void (*PrintFunc)(DataType data))
 {
 	if (NULL == queue_manager)
 	{
@@ -107,10 +108,12 @@ int TraversalPrint_queue(QueueType queue_manager, void (*PrintFunc)(void* data))
 	}
 	pQueueManager temp = (pQueueManager)queue_manager;
 
-	while (temp->tail->next != NULL)
+	pNode real_tail = temp->tail;
+
+	while (real_tail != NULL)
 	{
-		PrintFunc(temp->tail);
-		temp->tail = temp->tail->next;
+		PrintFunc(real_tail);
+		real_tail = real_tail->next;
 	}
 	return 0;
 }

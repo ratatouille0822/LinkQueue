@@ -23,6 +23,6 @@ int GetSize_Queue(QueueType queue_manager);
 int IsEmpty_Queue(QueueType queue_manager);
 DataType GetHeadElement_Queue(QueueType queue_manager);
 DataType GetTailElement_Queue(QueueType queue_manager);
-int TraversalPrint_queue(QueueType queue_manager, void (*PrintFunc)(void* data));
+int TraversalPrint_queue(QueueType queue_manager, void (*PrintFunc)(DataType data));
 int Free_Queue(QueueType queue_manager);
 
